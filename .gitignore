@@ -1,0 +1,4 @@
+venv/
+resources/documents/
+document_index.faiss
+document_names.txt
