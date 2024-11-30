@@ -55,7 +55,7 @@ Question: {query}
 
 Answer:
 """
-import google.generativeai as genai
+import google.generativeai as genai # type: ignore
 model = genai.GenerativeModel("gemini-1.5-flash")
 response = model.generate_content(prompt)
 print(response.text)

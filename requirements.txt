@@ -3,3 +3,4 @@ sentence-transformers
 faiss-cpu
 pypdf
 google-generativeai
+docx2txt

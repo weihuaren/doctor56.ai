@@ -1,9 +1,8 @@
 import os
 from pypdf import PdfReader # type: ignore
-from sentence_transformers import SentenceTransformer
-import faiss
-import numpy as np
-from openai import OpenAI
+from sentence_transformers import SentenceTransformer# type: ignore
+import faiss # type: ignore
+import numpy as np # type: ignore
 
 rootdir = b'resources/documents'
 document_names = []
@@ -21,12 +20,15 @@ for subdir, dirs, files in os.walk(rootdir):
 for document in document_names:
     print(f"processing: {document}")
     try: 
-        if not document.lower().endswith(".pdf"):
-            continue
+        # if not document.lower().endswith(".pdf"):
+        #     continue
         text = ""
-        reader = PdfReader(document)
-        for page in reader.pages:
-            text += page.extract_text() + "\n"
+        if document.lower().endswith(".docx"):
+            text = docx2txt.process("test.docx")  # type: ignore
+        else: 
+            reader = PdfReader(document)
+            for page in reader.pages:
+                text += page.extract_text() + "\n"
         document_contents.append(text)
     except Exception as e:
         print(f"Invalid document names: {document}")
